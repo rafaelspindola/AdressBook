@@ -1,8 +1,8 @@
 package model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor; // creates a class constructor with all arguments/properties
+import lombok.Data; // creates toString, equals, hashCode, getters and setters
+import lombok.NoArgsConstructor; // creates an empty class constructor with all arguments
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +18,7 @@ public class Contact {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; //primary key from SQL
 
     private String Name;
     private String email;
