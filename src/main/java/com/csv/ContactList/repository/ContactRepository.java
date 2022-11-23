@@ -1,6 +1,6 @@
-package repository;
+package com.csv.ContactList.repository;
 
-import model.Contact;
+import com.csv.ContactList.model.Contact;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 
 // how to access methods and manipulate contact table, in other words, accessing CRUD operations
 public interface ContactRepository
-    extends JpaRepository<Contact, Long> { }
+        extends JpaRepository<Contact, Long> { }
 

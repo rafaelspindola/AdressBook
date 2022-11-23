@@ -1,9 +1,9 @@
-package controller;
+package com.csv.ContactList.controller;
 
-import model.Contact;
+import com.csv.ContactList.model.Contact;
+import com.csv.ContactList.repository.ContactRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import repository.ContactRepository;
 
 import java.util.List;
 
@@ -11,7 +11,6 @@ import java.util.List;
 @RequestMapping({"/contacts"})
 
 public class ContactController {
-
     private ContactRepository repository;
     ContactController(ContactRepository contactRepository) {
         this.repository = contactRepository;

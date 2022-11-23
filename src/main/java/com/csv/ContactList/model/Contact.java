@@ -1,4 +1,4 @@
-package model;
+package com.csv.ContactList.model;
 
 import lombok.AllArgsConstructor; // creates a class constructor with all arguments/properties
 import lombok.Data; // creates toString, equals, hashCode, getters and setters
