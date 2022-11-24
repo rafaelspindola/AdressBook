@@ -26,6 +26,7 @@ public class ContactListApplication {
 						c.setName("Contact: " + i);
 						c.setPhone("contact " + i + "@email.com");
 						c.setEmail("(11) 11111-1111");
+						c.setLanguage("java, c#, python");
 						return c;
 			}).map(v -> repository.save(v)).forEach(System.out::println);
 		};

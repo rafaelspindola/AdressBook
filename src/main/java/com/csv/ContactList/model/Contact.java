@@ -25,5 +25,5 @@ public class Contact {
     private String phone;
 //    private String state;
 //    private String linkedin;
-//    private String language;
+    private String language;
 }

@@ -45,6 +45,7 @@ public class ContactController {
             record.setName((contact.getName()));
             record.setEmail(contact.getEmail());
             record.setPhone(contact.getPhone());
+            record.setLanguage(contact.getLanguage());
             Contact updated = repository.save(record);
             return ResponseEntity.ok().body(updated);
         }).orElse(ResponseEntity.notFound().build());
