@@ -20,13 +20,15 @@ public class ContactListApplication {
 	CommandLineRunner init(ContactRepository repository) {
 		return args -> {
 			repository.deleteAll();
-			LongStream.range(1,11)
+			LongStream.range(1,16)
 					.mapToObj(i -> {
 						Contact c = new Contact();
 						c.setName("Contact: " + i);
-						c.setPhone("contact " + i + "@email.com");
-						c.setEmail("(11) 11111-1111");
+						c.setPhone("(11) 11111-1111");
+						c.setEmail("contact " + i + "@email.com");
 						c.setLanguage("java, c#, python");
+						c.setLinkedin("linkedin.com/in/abcd/");
+						c.setState("DF");
 						return c;
 			}).map(v -> repository.save(v)).forEach(System.out::println);
 		};

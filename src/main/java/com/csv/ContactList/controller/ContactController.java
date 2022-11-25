@@ -7,18 +7,19 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping({"/contacts"})
+@RestController // interface annotated with @Controller and @ResponseBody, indicates that a class is a controller
+@RequestMapping({"/contacts"}) // annotation for mapping web requests onto methods, starting with /contacts
+// test through (http://localhost:8080/contacts)
 
 public class ContactController {
-    private ContactRepository repository;
+    private ContactRepository repository; //creates the repository object
     ContactController(ContactRepository contactRepository) {
         this.repository = contactRepository;
     }
 
     // retrieve all contacts (GET/contacts)
     // (select * from contact)
-    @GetMapping
+    @GetMapping //interface annotation for mapping HTTP GET requests onto specific methods
     public List findAll() {
         return repository.findAll();
     }
@@ -33,25 +34,28 @@ public class ContactController {
     }
 
     // create new contact
-    @PostMapping
+    @PostMapping //interface annotation for mapping HTTP POST requests onto specific methods
     public Contact create(@RequestBody Contact contact) {
         return repository.save(contact);
     }
 
     // update contact (PUT/contacts)
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "/{id}") //interface annotation for mapping HTTP PUT requests onto specific methods
     public ResponseEntity<Contact> update(@PathVariable("id") long id,@RequestBody Contact contact) {
         return repository.findById(id).map(record -> {
             record.setName((contact.getName()));
             record.setEmail(contact.getEmail());
             record.setPhone(contact.getPhone());
             record.setLanguage(contact.getLanguage());
+            record.setState(contact.getState());
+            record.setLinkedin(contact.getLinkedin());
             Contact updated = repository.save(record);
             return ResponseEntity.ok().body(updated);
         }).orElse(ResponseEntity.notFound().build());
     }
 
     // remove contact (DELETE/contacts/{id})
+    @DeleteMapping(path ={"/{id}"}) //interface annotation for mapping HTTP DELETE requests onto specific methods
     public ResponseEntity<?> delete(@PathVariable("id") long id) {
         return repository.findById(id).map(record -> {
             repository.deleteById(id);
